@@ -20,7 +20,7 @@ router.get(
   asyncHandler(async (req, res) => {
     // getting a product locally
     // const product = products.find((p) => p._id === req.params.id);
-
+// 
     // This is how you get a single product now.
     const product = await Product.findById(req.params.id);
 

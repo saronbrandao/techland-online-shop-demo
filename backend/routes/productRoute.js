@@ -20,17 +20,18 @@ router.get(
   asyncHandler(async (req, res) => {
     // getting a product locally
     // const product = products.find((p) => p._id === req.params.id);
-// 
+    //
     // This is how you get a single product now.
     const product = await Product.findById(req.params.id);
 
     if (product) {
       res.json(product);
+    } else {
+      // we are going to throw a new error that will be captured in the server by
+      //
+      res.status(404);
+      throw new Error('Resource not found');
     }
-
-    res.status(404).json({
-      message: 'Product not found',
-    });
   })
 );
 

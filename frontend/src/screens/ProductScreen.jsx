@@ -43,7 +43,7 @@ const ProductScreen = () => {
         qty,
       })
     );
-    navigate('/cart')
+    navigate('/cart');
   };
   // const {
   //   data: product,

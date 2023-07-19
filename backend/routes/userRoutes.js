@@ -20,7 +20,11 @@ router.post('/auth', authUser);
 router
   .route('/profile')
   .get(protect, getUserProfile)
-  .put(protect, protect, admin, updateUserProfile);
-router.route('/:id').delete(protect, admin, deleteUser).get(protect, admin, getUserByID).put(updateUser);
+  .put(protect, updateUserProfile);
+router
+  .route('/:id')
+  .delete(protect, admin, deleteUser)
+  .get(protect, admin, getUserByID)
+  .put(updateUser);
 
 export default router;

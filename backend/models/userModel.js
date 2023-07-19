@@ -28,12 +28,12 @@ const userSchema = new mongoose.Schema(
 );
 
 // Adding a method to the userSchema
-userSchema.methods.matchPassword = async (enteredPassword, userPassword) => {
-  return await bcrypt.compare(enteredPassword, userPassword);
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 
 // .pre allows us to do something before savind to the DB
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function (next) {
   // if it's not dealing with the password, it's gonna move on
   if (!this.isModified('password')) {
     next();

@@ -1,12 +1,8 @@
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
 import { useState } from 'react';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader.jsx';
 import Message from '../components/Message';
-
-// import products from '../products';
 import { Link } from 'react-router-dom';
 import {
   Row,

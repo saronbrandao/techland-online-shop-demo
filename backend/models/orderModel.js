@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema(
           type: String,
           require: true,
         },
-        quantity: {
+        qty: {
           type: Number,
           require: true,
         },
@@ -35,11 +35,19 @@ const orderSchema = new mongoose.Schema(
     shippingAddress: {
       address: {
         type: String,
-        require: true,
+        required: true,
       },
       city: {
         type: String,
-        require: true,
+        required: true,
+      },
+      postalCode: {
+        type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+        required: true,
       },
     },
     paymentMethod: {

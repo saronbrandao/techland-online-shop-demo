@@ -14,7 +14,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
-import CartScreen from './screens/CartScreen';
+import CartScreen from './screens/CartScreen_';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';

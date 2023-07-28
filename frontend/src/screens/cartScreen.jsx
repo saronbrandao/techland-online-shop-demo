@@ -23,7 +23,6 @@ const CartScreen = () => {
     dispatch(addToCart({ ...product, qty }));
   };
   const removeFromCartHandler = async (id) => {
-    console.log('remove from cart handler');
     dispatch(removeFromCart(id));
   };
   const checkoutHandler = () => {

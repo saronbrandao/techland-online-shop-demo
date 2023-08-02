@@ -132,7 +132,7 @@ const ProductEditScreen = () => {
                 label="Choose File"
                 onChange={uploadFileHandler}
               ></Form.Control>
-              {isLoading && <Loader />}
+              {loadingUpload && <Loader />}
             </Form.Group>
 
             <Form.Group controlId="brand" className="my-2">

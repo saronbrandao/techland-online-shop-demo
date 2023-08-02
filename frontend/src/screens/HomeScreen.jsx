@@ -3,26 +3,20 @@ import Product from '../components/Product';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 import Loader from '../components/Loader.jsx';
 import Message from '../components/Message';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import Paginate from '../components/Paginate';
+import ProductCarousel from '../components/ProductCarousel';
 
 const HomeScreen = () => {
 
-  const pageNumber = useParams()
+  const {keyword, pageNumber} = useParams()
   // the loading and error are managed by redux toolkit
-  const { data, isLoading, error } = useGetProductsQuery(pageNumber);
+  const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber});
 
-  // const [products, setProducts] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     const { data } = await axios.get('/api/products');
-  //     setProducts(data);
-  //   };
-
-  //   fetchProducts();
-  // }, []);
   return (
     <>
+    {!keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mt-2 mb-4'>Go Back</Link>}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -39,6 +33,7 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
+          <Paginate pages={data.pages} page={data.page} keyword={keyword ? keyword : ''}/>
         </>
       )}
     </>

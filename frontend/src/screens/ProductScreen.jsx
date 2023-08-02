@@ -16,10 +16,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Rating from '../components/Rating';
 import { addToCart } from '../slices/cartSlice.js';
-import {toast} from 'react-toastify'
+import {toast} from 'react-toastify';
+import Meta from '../components/Meta';
 
 const ProductScreen = () => {
-  // const [product, setProduct] = useState([]);
   const { id: productId } = useParams();
 
   const dispatch = useDispatch();
@@ -85,6 +85,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+        <Meta title={product.name}/>
         <Row>
           <Col md={5}>
             <Image src={product.image} alt={product.name} fluid />

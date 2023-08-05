@@ -23,9 +23,8 @@ const Header = () => {
       await logoutApiCall().unwrap();
       dispatch(logout());
       navigate('/login');
-    } catch (error) {
-      console.log('erro aqui');
-      console.log(error);
+    } catch (err) {
+      console.error(err);
     }
   };
 

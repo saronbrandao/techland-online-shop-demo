@@ -17,7 +17,6 @@ const RegisterScreen = () => {
   const dispath = useDispatch();
   const navigate = useNavigate();
 
-  // Bringing the actual login function which is inside useLoginMutation
   const [register, { isLoading }] = useRegisterMutation();
 
   const { userInfo } = useSelector((state) => state.auth);

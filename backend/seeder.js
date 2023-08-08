@@ -16,7 +16,7 @@ const importData = async () => {
   try {
     await Order.deleteMany();
     await Product.deleteMany();
-    await User.deleteMany();
+    // await User.deleteMany();
 
     // insertMany return the arrawy of users
     const createUsers = await User.insertMany(users);

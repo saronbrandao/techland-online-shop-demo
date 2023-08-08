@@ -31,13 +31,11 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const userExists = await User.findOne({ email });
 
-  // Checking if an user already exists with this email
   if (userExists) {
     res.status(400);
     throw new Error('User already exists');
   }
 
-  // User information comming from the UI
   const user = await User.create({
     name,
     email,
@@ -104,7 +102,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       user.password = req.body.password;
     }
 
-    // This returns the user data
     const updatedUser = await user.save();
 
     res.status(200).json({

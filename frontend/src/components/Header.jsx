@@ -15,7 +15,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // You can call the destructed function whatever you want.
   const [logoutApiCall] = useLogoutMutation();
 
   const logoutHandler = async () => {
@@ -30,12 +29,12 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+      <Navbar bg="primary" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
               <img src={logo} alt="ProShop" />
-              Proshop
+              TechLand
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -7,7 +7,7 @@ const notFound = (req, res, next) => {
 
 // Handling CastError
 const errorHandler = (err, req, res, next) => {
-  // here, we only change the error type if it is 200.
+
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = err.message;
 

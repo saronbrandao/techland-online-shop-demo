@@ -37,7 +37,6 @@ const getProductById = asyncHandler(async (req, res) => {
   if (product) {
     res.json(product);
   } else {
-    // we are going to throw a new error that will be captured in the server by
     res.status(404);
     throw new Error('Resource not found');
   }
@@ -47,7 +46,6 @@ const getProductById = asyncHandler(async (req, res) => {
 // @route     POST /api/products
 // @access    Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  // console.log(req.user._id);
   const product = new Product({
     name: 'Sample name',
     price: 0,
@@ -61,10 +59,8 @@ const createProduct = asyncHandler(async (req, res) => {
   });
 
   const validationError = product.validateSync();
-  // console.log(validationError);
 
   if (validationError) {
-    // If validation fails, return the error
     res.status(400).json({ error: validationError.message });
   }
 

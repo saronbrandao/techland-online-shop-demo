@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { updateCart } from '../utils/cartUtils.js';
+
 //  Defining the initial state
 const initialState = localStorage.getItem('cart')
   ? JSON.parse(localStorage.getItem('cart'))
   : { cartItems: [], shippingAddress: {}, paymentMethod: 'Paypal' };
 
-//  Creating the slice
+//  Creating slice
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -15,6 +16,7 @@ const cartSlice = createSlice({
 
       // Checking if the item already exists
       const existItem = state.cartItems.find((x) => x._id === item._id);
+      
       // Updating the quantity for the existing item
       if (existItem) {
         state.cartItems = state.cartItems.map((x) =>

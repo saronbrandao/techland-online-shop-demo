@@ -7,7 +7,6 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
 import App from './App';
@@ -26,7 +25,6 @@ import ProfileScreen from './screens/ProfileScreen';
 import ProductListScreen from './screens/admin/ProductListScreen';
 import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserEditScreen from './screens/admin/userEditScreen';
-//
 import { Provider } from 'react-redux';
 import store from './store';
 import AdminRoute from './components/AdminRoute';

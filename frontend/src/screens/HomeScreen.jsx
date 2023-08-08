@@ -8,32 +8,52 @@ import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
 
 const HomeScreen = () => {
+  const { keyword, pageNumber } = useParams();
+  const { data, isLoading, error } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+  });
 
-  const {keyword, pageNumber} = useParams()
-  // the loading and error are managed by redux toolkit
-  const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber});
-
+  if (!isLoading) {
+    console.log(data.products.length);
+  }
 
   return (
     <>
-    {!keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mt-2 mb-4'>Go Back</Link>}
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light mt-2 mb-4">
+          Go Back
+        </Link>
+      )}
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>
+        <Message variant="danger">
           {error?.data?.message || error.error}
         </Message>
       ) : (
         <>
-          <h1>Latest Products</h1>
-          <Row>
-            {data.products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
-          <Paginate pages={data.pages} page={data.page} keyword={keyword ? keyword : ''}/>
+          {keyword ? <h1>Search Results</h1> : <h1>Latest Products</h1>}
+          {data.products.length === 0 ? (
+            <h3>No Items Found :/</h3>
+          ) : (
+            <>
+              <Row>
+                {data.products.map((product) => (
+                  <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                    <Product product={product} />
+                  </Col>
+                ))}
+              </Row>
+              <Paginate
+                pages={data.pages}
+                page={data.page}
+                keyword={keyword ? keyword : ''}
+              />
+            </>
+          )}
         </>
       )}
     </>

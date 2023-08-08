@@ -11,9 +11,9 @@ import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 const port = process.env.PORT || 5000;
-const __dirname = path.resolve(); // Set __dirname to current directory
+const __dirname = path.resolve(); 
 
-// Connect to MongoDB
+// Connecting to MongoDB
 connectDB();
 const app = express();
 
@@ -35,16 +35,16 @@ app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 
-// Hiding paypal client id
+// Getting paypal client id
 app.get('/api/config/paypal', (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
 );
 
 if (process.env.NODE_ENV === 'production') {
-  // set static folder
+  // Setting static folder
   app.use(express.static(path.join(__dirname, '/frontend/build')));
 
-  // any route that is not api will be redirected to index.html
+  // Redirecting to index.html
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
   );

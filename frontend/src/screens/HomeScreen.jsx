@@ -14,10 +14,6 @@ const HomeScreen = () => {
     pageNumber,
   });
 
-  if (!isLoading) {
-    console.log(data.products.length);
-  }
-
   return (
     <>
       {!keyword ? (

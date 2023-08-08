@@ -208,12 +208,15 @@ const OrderScreen = () => {
                     <Loader />
                   ) : (
                     <div>
-                      <Button
-                        style={{ marginBottom: '10px' }}
-                        onClick={onApproveTest}
-                      >
-                        Test Pay Order
-                      </Button>
+                      {userInfo.isAdmin && (
+                        <Button
+                          style={{ marginBottom: '10px' }}
+                          onClick={onApproveTest}
+                        >
+                          Test Pay Order
+                        </Button>
+                      )}
+
                       <div>
                         <PayPalButtons
                           createOrder={createOrder}

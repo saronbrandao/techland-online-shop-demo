@@ -55,3 +55,40 @@ table th {
 h1 {
   color: #3c4c5d;
 }
+
+footer .container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+
+  & p {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+#search-btn {
+  margin-left: 20px;
+}
+
+.cart-selector-trash {
+  display: flex;
+  flex-direction: row;
+
+  .form-control {
+    max-width: 50px;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 20px;
+  }
+}

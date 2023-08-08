@@ -14,9 +14,8 @@ import Paginate from '../../components/Paginate';
 import { useSelector } from 'react-redux';
 
 const ProductListScreen = () => {
-
-  const {isAdmin} = useSelector(state => state.auth.userInfo)
-  const pageNumber = useParams()
+  const { isAdmin } = useSelector((state) => state.auth.userInfo);
+  const pageNumber = useParams();
   const { data, isLoading, error, refetch } = useGetProductsQuery(pageNumber);
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
@@ -51,7 +50,7 @@ const ProductListScreen = () => {
     <>
       <Row className="align-items-center">
         <Col>
-          <h1>Products</h1>
+          <h1 style={{ marginBottom: '20px', marginTop: '35px' }}>Products</h1>
         </Col>
         <Col className="text-end">
           <Button className="my-3" onClick={createProductHandler}>
@@ -107,7 +106,7 @@ const ProductListScreen = () => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={data.pages} page={data.page} isAdmin={isAdmin}/>
+          <Paginate pages={data.pages} page={data.page} isAdmin={isAdmin} />
         </>
       )}
     </>

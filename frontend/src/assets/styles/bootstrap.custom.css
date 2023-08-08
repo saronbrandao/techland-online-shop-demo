@@ -4063,6 +4063,8 @@ fieldset:disabled .btn {
   color: var(--bs-navbar-brand-color);
   text-decoration: none;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {

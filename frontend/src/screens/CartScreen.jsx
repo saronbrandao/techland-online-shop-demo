@@ -26,13 +26,15 @@ const CartScreen = () => {
     dispatch(removeFromCart(id));
   };
   const checkoutHandler = () => {
-    navigate('/login?redirect=/shipping')
-  }
+    navigate('/login?redirect=/shipping');
+  };
 
   return (
     <Row>
       <Col md={8}>
-        <h1 style={{ marginBottom: '20px' }}>Shopping Cart</h1>
+        <h1 style={{ marginBottom: '20px', marginTop: '35px' }}>
+          Shopping Cart
+        </h1>
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to="/">Go Back</Link>
@@ -54,29 +56,31 @@ const CartScreen = () => {
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
-                  <Col md={2}>
-                    <Form.Control
-                      as="select"
-                      value={item.qty}
-                      onChange={(e) =>
-                        addToCartHandler(item, Number(e.target.value))
-                      }
-                    >
-                      {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                  <Col md={2}>
-                    <Button
-                      type="button"
-                      variant="light"
-                      onClick={() => removeFromCartHandler(item._id)}
-                    >
-                      <FaTrash />
-                    </Button>
+                  <Col md={2} className='cart-selector-trash'>
+                    <Col>
+                      <Form.Control
+                        as="select"
+                        value={item.qty}
+                        onChange={(e) =>
+                          addToCartHandler(item, Number(e.target.value))
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                    <Col md={2}>
+                      <Button
+                        type="button"
+                        variant="light"
+                        onClick={() => removeFromCartHandler(item._id)}
+                      >
+                        <FaTrash />
+                      </Button>
+                    </Col>
                   </Col>
                 </Row>
               </ListGroup.Item>

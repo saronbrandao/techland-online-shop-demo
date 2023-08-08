@@ -71,6 +71,7 @@ footer .container {
 
   @media (min-width: 768px) {
     flex-direction: row;
+    gap: 10px;
   }
 }
 
